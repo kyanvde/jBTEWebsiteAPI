@@ -13,4 +13,12 @@ class BTEWebsiteAPITest {
         System.out.println(healthCheck);
         assertThat(healthCheck).isNotNull();
     }
+
+    @Test
+    void healthCheckHasCorrectValuesAssumingAPIIsFullyOperational() {
+        HealthCheck healthCheck = BTEWebsiteAPI.healthCheck();
+
+        assertThat(healthCheck.statusCode()).isEqualTo(200);
+        assertThat(healthCheck.statusMessage()).isEqualTo("OK");
+    }
 }
